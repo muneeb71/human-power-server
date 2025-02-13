@@ -1,24 +1,28 @@
 {
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node dist/app.js",
+    "start": "tsc && node dist/app.js ",
     "build": "tsc",
     "watch": "tsc -w",
     "dev": "nodemon dist/app.js"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.64.2",
     "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
     "@types/jsonwebtoken": "^9.0.7",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "http": "^0.0.1-security",
     "init": "^0.1.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.5",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "react-spinner-material": "^1.4.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
