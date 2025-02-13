@@ -1,10 +1,15 @@
+import { hash } from "bcryptjs";
 import { Manager } from "./manager.model";
 import { IManagerDetails } from "./types/manager.types";
 
 export const getAllService = async () => await Manager.find();
 
-export const createServicve = async (data: IManagerDetails) =>
-  await Manager.create(data);
+export const createServicve = async (data: IManagerDetails) =>{
+  const hashPassword = await hash(data.password, 10);
+  return await Manager.create({...data, password: hashPassword});
+  // const allowedPermissionsCount = Object.values(data.permissions).filter(Boolean).length;
+  // data.allowed_permissions = allowedPermissionsCount;
+}
 
 export const getByIdService = async (id: string) =>
   await Manager.findById(id);

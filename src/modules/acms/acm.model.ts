@@ -1,32 +1,35 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { IAcmDetails } from "./types/acm.types";
 
 const schema = new mongoose.Schema(
   {
+    login_role: { type: String, enum: ["acm"], default: "acm" },
     name: {
       type: String,
-      required: true,
+    },
+    acmId: {
+      type: String,
+    },
+    photo: {
+      type: String
     },
     email: {
       type: String,
-      unique: true,
-      required: true,
+    },
+    password: {
+      type: String,
     },
     address: {
       type: String,
-      required: true,
     },
     phoneNo: {
       type: String,
-      required: true,
     },
-    company_name: {
+    acm_location: {
       type: String,
-      required: true,
     },
-    company_location: {
-      type: String,
-      required: true,
+    company: {
+      type: Schema.Types.ObjectId, ref: "Client"
     },
     joinedOn: {
       type: Date,

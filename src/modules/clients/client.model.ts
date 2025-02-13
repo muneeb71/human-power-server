@@ -5,28 +5,28 @@ const schema = new mongoose.Schema(
   {
     companyName: {
       type: String,
-      required: true,
+    },
+    photo: {
+      type: String,
     },
     email: {
       type: String,
       unique: true,
-      required: true,
     },
     address: {
       type: String,
-      required: true,
     },
     phoneNo: {
       type: String,
-      required: true,
     },
     description: {
       type: String,
-      required: true,
     },
     company_location: {
       type: String,
-      required: true,
+    },
+    company_logo: {
+      type: String,
     },
     joinedOn: {
       type: Date,

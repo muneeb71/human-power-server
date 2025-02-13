@@ -1,14 +1,16 @@
 import express from 'express'
 import { create, deleteById, getAll, updateById } from './manager.controller';
+import { isAuthenticated } from '../../middleware/isAuthenticated';
+import { authorizeRoles } from '../../middleware/authorizeRoles';
 
 const router = express.Router();
 
-router.post('/', create);
+router.post('/',isAuthenticated, authorizeRoles(["Human Power" ,"IT"]), create);
 
-router.get('/', getAll);
+router.get('/',isAuthenticated, authorizeRoles(["Human Power", "IT" , "TP HR", "PM"]), getAll);
 
-router.put('/:id', updateById);
+router.put('/:id', isAuthenticated,updateById);
 
-router.delete('/:id', deleteById);
+router.delete('/:id',isAuthenticated, authorizeRoles(["Human Power", "TP HR", "PM"]), deleteById);
 
 export default router;

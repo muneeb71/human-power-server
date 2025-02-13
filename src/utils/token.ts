@@ -8,19 +8,7 @@ export const sendToken = (
   check: boolean
 ) => {
   let token;
-  // if (check) {
-  //   token = jwt.sign({ _id: user._id }, "jwtsecret", {
-  //     expiresIn: "1d",
-  //   });
-
-  //   res.status(statusCode).json({
-  //     success: true,
-  //     token,
-  //     user,
-  //     message,
-  //   });
-  // } else {
-    token = jwt.sign({ _id: user._id }, "jwtsecret", {
+    token = jwt.sign({ _id: user._id, login_role: user.login_role }, "jwtsecret", {
       expiresIn: "1d",
     });
     res.status(statusCode).json({

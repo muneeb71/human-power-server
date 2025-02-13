@@ -3,7 +3,14 @@ import { IManagerDetails } from "./types/manager.types";
 
 const schema = new mongoose.Schema(
   {
+    login_role: { type: String, enum: ["manager"], default: "manager" },
     name: {
+      type: String,
+    },
+    password: {
+      type: String,
+    },
+    photo: {
       type: String,
     },
     contact: {
@@ -14,29 +21,12 @@ const schema = new mongoose.Schema(
     },
     role: {
       type: String,
+      enum: ["Human Power","IT", "TP HR", "PM"],
     },
-    permissions: {
-      createProfiles: {
-        type: Boolean,
-        default: false,
-      },
-      accessRequestedClasses: {
-        type: Boolean,
-        default: false,
-      },
-      rejectIncomingClassRequests: {
-        type: Boolean,
-        default: false,
-      },
-      deleteClasses: {
-        type: Boolean,
-        default: false,
-      },
-      editAndDeleteRequests: {
-        type: Boolean,
-        default: false,
-      },
+    allowed_permissions: {
+      type: Number,
     },
+ 
   },
   { timestamps: true }
 );

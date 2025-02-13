@@ -1,6 +1,6 @@
 import { TryCatch } from "../../middleware/trycatch";
 import { sendToken } from "../../utils/token";
-import { createService, getAllService, loginService } from "./user.service";
+import { createService, getAcmCardsFDataService, getAllService, getCardsDataService, loginService, updateService } from "./user.service";
 
 //  -----------CREATE A USER----------
 export const create = TryCatch(async (req, res) => {
@@ -15,6 +15,16 @@ export const login = TryCatch(async (req, res) => {
 
 });
 
+//  -----------UPDATE A USER----------
+export const updateById = TryCatch(async (req, res) => {
+  const updatedUser = await updateService(req.params.id, req.body);
+
+  return res.status(200).json({
+    success: true,
+    data: updatedUser,
+  });
+});
+
 //  -----------VIEW ALL USERS----------
 export const getAll = TryCatch(async (req, res) => {
   const users = await getAllService();
@@ -23,3 +33,22 @@ export const getAll = TryCatch(async (req, res) => {
     data: users,
   });
 });
+
+//  -----------GET REPORTING CARDS DATA----------
+export const getCardsData = TryCatch(async (req, res) => {
+  const cardsData = await getCardsDataService();
+  return res.status(200).json({
+    success: true,
+    data: cardsData,
+  });
+});
+
+//  -----------GET ACM CARDS DATA----------
+export const getAcmCardsData = TryCatch(async (req, res) => {
+  const cardsData = await getAcmCardsFDataService(req.params.id);
+  return res.status(200).json({
+    success: true,
+    data: cardsData,
+  });
+});
+

@@ -1,3 +1,4 @@
+import { Acm } from "../acms/acm.model";
 import { Client } from "./client.model";
 import { IClientDetails } from "./types/client.types";
 
@@ -16,6 +17,7 @@ export const updateService = async (id: string, data: Partial<IClientDetails>) =
 };
 
 export const deleteService = async (id: string) => {
+  const deleteAcm = await Acm.deleteMany({ company: id });
   const deletedClient = await Client.findByIdAndDelete(id);
 
   if (!deletedClient) {

@@ -1,14 +1,16 @@
 import express from 'express'
 import { create, getAll, deleteById,updateById } from './client.controller';
+import { isAuthenticated } from '../../middleware/isAuthenticated';
+import { authorizeRoles } from '../../middleware/authorizeRoles';
 
 const app = express.Router();
 
-app.post("/", create)
+app.post("/", isAuthenticated,  create)
 
-app.get("/", getAll)
+app.get("/", isAuthenticated,  getAll)
 
-app.put("/:id", updateById)
+app.put("/:id", isAuthenticated,  updateById)
 
-app.delete("/:id", deleteById)
+app.delete("/:id",isAuthenticated , authorizeRoles(["Human Power" , "TP HR", "PM"]), deleteById)
 
 export default app;
