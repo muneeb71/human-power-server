@@ -29,7 +29,8 @@ app.use(
       "http://localhost:3001",
       "http://localhost:3000",
       "http://192.168.18.118:3000",
-      "http://192.168.18.118:3001"
+      "http://192.168.18.118:3001",
+      "https://humanpower-erf-integration.vercel.app"
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
