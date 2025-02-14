@@ -3,7 +3,12 @@ name: Deploy to GCP VM
 on:
   push:
     branches:
-      - main  # Adjust if using a different branch
+      - main
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
 
 jobs:
   deploy:
