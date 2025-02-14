@@ -1,4 +1,4 @@
-ame: Deploy to GCP VM
+name: Deploy to GCP VM
 
 on:
   push:
