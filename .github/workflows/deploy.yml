@@ -33,8 +33,10 @@ jobs:
           key: ${{ secrets.GCP_SSH_PRIVATE_KEY }}
           script: |
             eval "$(ssh-agent -s)"
-            ssh-add ~/.ssh/id_rsa_git
-            cd /var/www/human-power-api || git clone git@github.com:muneeb71/human-power-server.git /var/www/human-power-api
+            ssh-add ~/id_rsa_git
+            if [ ! -d "/var/www/human-power-api/.git" ]; then
+              git clone git@github.com:muneeb71/human-power-server.git /var/www/human-power-api
+            fi
             cd /var/www/human-power-api
             git pull origin main
             npm install
