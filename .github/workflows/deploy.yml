@@ -33,7 +33,7 @@ jobs:
           key: ${{ secrets.GCP_SSH_PRIVATE_KEY }}
           script: |
             eval "$(ssh-agent -s)"
-            ssh-add ~/.ssh/github_deploy_key
+            ssh-add ~/.ssh/id_rsa_git
             cd /var/www/human-power-api || git clone git@github.com:muneeb71/human-power-server.git /var/www/human-power-api
             cd /var/www/human-power-api
             git pull origin main
