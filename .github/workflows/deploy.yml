@@ -25,7 +25,7 @@ jobs:
       - name: Build TypeScript
         run: npm run build
 
-            - name: Deploy to GCP VM
+      - name: Deploy to GCP VM
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.GCP_VM_IP }}
